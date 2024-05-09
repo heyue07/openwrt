@@ -66,8 +66,8 @@ export Disable_autosamba="0"                 # 去掉源码默认自选的luci-a
 
 
 
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+#rm -rf feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 
 # 其他
 export Ttyd_account_free_login="0"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
@@ -84,10 +84,7 @@ export rootfs_size="2560"
 export kernel_usage="stable"
 
 
-# OpenClash调整
-openclash="luci-app-openclash/root/etc/uci-defaults/luci-openclash"
-sed -i '/exit/i\uci -q set openclash.config.dashboard_password="123456"' $openclash #设置默认控制面板登录密钥为123456
-sed -i '/^#Set authentication$/,/^${uci_set}password=.*/d' $openclash #默认关闭SOCKS5/HTTP认证信息
+
 
 # 修改插件名字
 sed -i 's/"aMule设置"/"电驴下载"/g' `egrep "aMule设置" -rl ./`
