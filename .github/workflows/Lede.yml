@@ -243,6 +243,10 @@ jobs:
         fi
         
 
+    - name: 修复argon背景图404问题
+      run: |
+        sed -i '/argon\/jpg\/${pmg}.jpg.*argon.jpg/s/$/ || true/' openwrt/build/${{ env.FOLDER_NAME }}/common.sh
+
     - name: 生成"${{ matrix.target }}"配置文件
       if: env.REPO_TOKEN
       id: compile
